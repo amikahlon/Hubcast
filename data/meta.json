@@ -1,0 +1,12 @@
+{
+  "refreshedAt": "2026-10-06",
+  "weather": {
+    "source": "Open-Meteo Historical Weather API",
+    "startDate": "2023-01-01",
+    "endDate": "2025-12-31"
+  },
+  "hazards": {
+    "source": "FEMA National Risk Index (county level)",
+    "version": "December 2025"
+  }
+}

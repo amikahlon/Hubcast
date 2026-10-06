@@ -4,13 +4,13 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  { ignores: ['**/node_modules/', '**/dist/', 'data/'] },
+  { ignores: ['**/node_modules/', '**/dist/', 'data/', 'eslint.config.js'] },
   js.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
       parserOptions: {
-        projectService: { allowDefaultProject: ['eslint.config.js'] },
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -22,10 +22,6 @@ export default tseslint.config(
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' },
       ],
     },
-  },
-  {
-    files: ['eslint.config.js'],
-    languageOptions: { globals: globals.node },
   },
   {
     files: ['web/src/**/*.{ts,tsx}'],

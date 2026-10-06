@@ -1,14 +1,14 @@
 # Phase 1: Foundation
 
-**Goal:** a tested skeleton with shared schemas, the hub catalog and basic endpoints. No agent or external APIs yet.
+**Goal:** a skeleton with shared schemas, the hub catalog and basic endpoints. No agent or external APIs yet.
 
 ## Tasks
 
 1. **Repo setup**
    - npm workspaces: `shared`, `server`, `web`
-   - Strict TypeScript, ESM, ESLint, Prettier, Vitest
+   - Strict TypeScript, ESM, ESLint, Prettier
    - `.env.example` with `PORT`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL` (placeholders only)
-   - Root scripts: `dev`, `test`, `typecheck`, `lint`
+   - Root scripts: `dev`, `typecheck`, `lint`
 
 2. **Shared schemas** (`shared/src/schemas/`)
    - `Region`, `HazardType`, `RiskLevel`, state-to-region mapping
@@ -38,17 +38,8 @@
    - Vite + React app with a dev proxy to the server
    - One page showing the server status
 
-6. **Tests**
-   - Schemas: valid and invalid input
-   - Hub catalog: 19 hubs, unique IDs, region matches state
-   - Hubs service filters
-   - API: `/health`, `/hubs`, invalid query returns 400
-
-7. **Docs**
-   - Create `docs/session-log.md` with the planning session and Phase 1 entries
-
 ## Done when
 
 - `npm run dev` starts server and web
-- `npm test`, `npm run typecheck` and `npm run lint` pass
+- `npm run typecheck` and `npm run lint` pass
 - `/health` and `/hubs` return validated responses

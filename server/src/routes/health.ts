@@ -1,7 +1,7 @@
 import { HealthResponseSchema } from '@hubcast/shared';
 import { Router } from 'express';
 import type { HubsService } from '../services/hubs.js';
-import { sendValidated } from './validation.js';
+import { sendValidated } from './http.js';
 
 export function healthRouter(deps: { hubsService: HubsService; dataAsOf: string | null }): Router {
   const router = Router();

@@ -6,11 +6,17 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "refresh-data": "tsx scripts/refresh-data/index.ts",
+    "eval": "tsx evals/run.ts"
   },
   "dependencies": {
     "@hubcast/shared": "*",
+    "@langchain/anthropic": "^1.5.12",
+    "@langchain/core": "^1.2.14",
+    "@langchain/langgraph": "^1.4.19",
     "express": "^5.2.1",
+    "langchain": "^1.5.15",
     "zod": "^4.6.5"
   },
   "devDependencies": {
