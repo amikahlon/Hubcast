@@ -1,14 +1,9 @@
 import { randomUUID } from 'node:crypto';
 import { existsSync } from 'node:fs';
-import { ChatAnthropic } from '@langchain/anthropic';
-import { createHubAgent } from '../src/agent/agent.js';
-import { createChatService, type ChatResult } from '../src/agent/chat.js';
+import type { ChatResult } from '../src/agent/chat.js';
 import { parseEnv } from '../src/config/env.js';
 import { ENV_FILE } from '../src/config/paths.js';
-import { loadDataset } from '../src/data/load.js';
-import { loadHubCatalog } from '../src/data/load.js';
-import { createServices } from '../src/services/index.js';
-import { createTools } from '../src/tools/index.js';
+import { createRuntime } from '../src/runtime.js';
 import { COMMON_CHECKS, buildCases, type Check, type EvalCase } from './cases.js';
 
 function failedChecks(checks: readonly Check[], result: ChatResult): string[] {
@@ -34,13 +29,7 @@ async function main(): Promise<void> {
     return;
   }
 
-  // Same setup as server/src/index.ts, without the HTTP server.
-  const hubs = await loadHubCatalog();
-  const dataset = await loadDataset(hubs);
-  const services = createServices(hubs, dataset);
-  const model = new ChatAnthropic({ model: env.ANTHROPIC_MODEL, apiKey: env.ANTHROPIC_API_KEY });
-  const agent = createHubAgent({ model, tools: createTools({ services, meta: dataset.meta }) });
-  const chat = createChatService({ agent, hubIds: services.hubs.getHubIds() });
+  const { services, chatService } = await createRuntime(env);
 
   const allCases = buildCases({ services });
   const wanted = process.argv.slice(2).filter((arg) => arg !== '--');
@@ -65,7 +54,7 @@ async function main(): Promise<void> {
     let failures: string[];
 
     try {
-      for (const message of evalCase.messages) result = await chat.chat(threadId, message);
+      for (const message of evalCase.messages) result = await chatService.chat(threadId, message);
       failures = result
         ? failedChecks([...COMMON_CHECKS, ...evalCase.checks], result)
         : ['no messages'];

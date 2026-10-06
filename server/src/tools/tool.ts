@@ -10,7 +10,7 @@ import { ServiceError } from '../services/common.js';
 import type { Services } from '../services/index.js';
 import { formatIssues } from '../utils.js';
 
-/** A tool as the agent sees it: a name, a description, an input schema and a thin `run`. */
+/** A tool definition independent of LangChain. */
 export interface ToolHandler {
   name: ToolName;
   description: string;
@@ -19,7 +19,7 @@ export interface ToolHandler {
   run(input: unknown): ToolResult<unknown>;
 }
 
-/** What every tool needs: the services to call, the data info for `meta`, and the input schemas. */
+/** Shared context for the four tool factories. */
 export interface ToolDeps {
   services: Services;
   meta: DataMeta;
@@ -39,10 +39,7 @@ interface ToolDefinition<S extends z.ZodType> {
   call: (input: z.output<S>) => unknown;
 }
 
-/**
- * Builds a tool. The tool never throws: bad input and service errors (for example an unknown
- * year) come back as `{ ok: false, error }`, so the agent can read them and continue.
- */
+// Every tool follows the same path: validate -> call service -> return data or error.
 export function defineTool<S extends z.ZodType>(definition: ToolDefinition<S>): ToolHandler {
   const { name, description, schema, sources, dataAsOf, call } = definition;
   return {

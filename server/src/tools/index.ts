@@ -8,10 +8,7 @@ import type { ToolHandler } from './tool.js';
 
 export { failure, type ToolHandler } from './tool.js';
 
-/**
- * The 4 tools the agent can call. Each one only validates its input and calls one
- * deterministic service: tools -> services.
- */
+// The agent's tool registry. Input schemas allow only IDs from the hub catalog.
 export function createTools(deps: { services: Services; meta: DataMeta }): ToolHandler[] {
   const schemas = buildToolInputSchemas(deps.services.hubs.getHubIds());
   const toolDeps = { ...deps, schemas };
