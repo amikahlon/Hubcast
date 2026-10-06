@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { HazardTypeSchema, RegionSchema, StateCodeSchema } from './common.js';
 import { buildHubIdSchema } from './hub.js';
-import { RiskSortBySchema } from './risk.js';
+import { RiskSortBySchema, WeatherValueSchema } from './risk.js';
 
 // --- Tool results: the envelope every tool returns ---
 export const ToolErrorCodeSchema = z.enum([
@@ -54,8 +54,9 @@ export function buildToolInputSchemas(hubIds: readonly string[]) {
       state: StateCodeSchema.optional(),
     }),
     get_weather_stats: z.object({
-      hubIds: z.array(HubId).min(1),
+      hubIds: z.array(HubId).min(1).optional(),
       year: z.number().int().optional(),
+      sortBy: WeatherValueSchema.optional(),
     }),
     get_hazard_exposure: z.object({
       hubIds: z.array(HubId).min(1),

@@ -18,16 +18,48 @@ export type NriReading = z.infer<typeof NriReadingSchema>;
 
 // --- Weather stats ---
 
+/** Raw weather values a get_weather_stats result can be sorted by. */
+export const WeatherValueSchema = z.enum([
+  'totalSnowfallCm',
+  'totalPrecipitationMm',
+  'maxSnowfallCm',
+  'maxPrecipitationMm',
+  'maxWindGustKmh',
+  'highestTempC',
+  'lowestTempC',
+]);
+export type WeatherValue = z.infer<typeof WeatherValueSchema>;
+
 export const WeatherStatsResultSchema = z.object({
+  /** Value the hubs are sorted by (`lowestTempC` ascending, others descending), or `null`. */
+  sortBy: WeatherValueSchema.nullable(),
   period: z.object({
     /** `year`: one calendar year. `yearlyAverage`: average per year over all years. */
     kind: z.enum(['year', 'yearlyAverage']),
     startYear: z.number().int(),
     endYear: z.number().int(),
+    /** Plain-text description of the period and how to read the values. */
+    description: z.string(),
   }),
   hubs: z.array(
     z.object({
       hubId: z.string(),
+      /** Position when sorted by `sortBy`, starting at 1; `null` when not sorted. */
+      rank: z.number().int().positive().nullable(),
+      /**
+       * Raw weather values, not risk scores. Totals are per year when `period.kind` is
+       * `yearlyAverage`; highest and lowest values are over the whole period.
+       * `null` only when the period has no data for the value.
+       */
+      values: z.object({
+        totalSnowfallCm: z.number().min(0).nullable(),
+        totalPrecipitationMm: z.number().min(0).nullable(),
+        maxSnowfallCm: z.number().min(0).nullable(),
+        maxPrecipitationMm: z.number().min(0).nullable(),
+        maxWindGustKmh: z.number().min(0).nullable(),
+        highestTempC: z.number().nullable(),
+        lowestTempC: z.number().nullable(),
+      }),
       metrics: z.array(
         z.object({
           metric: WeatherMetricSchema,
@@ -44,6 +76,7 @@ export const WeatherStatsResultSchema = z.object({
   ),
 });
 export type WeatherStatsResult = z.infer<typeof WeatherStatsResultSchema>;
+export type WeatherValues = WeatherStatsResult['hubs'][number]['values'];
 
 // --- Hazard exposure ---
 

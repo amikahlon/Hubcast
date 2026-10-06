@@ -24,6 +24,7 @@ async function main(): Promise<void> {
     hubsService: services.hubs,
     chatService,
     dataAsOf: dataset.meta.refreshedAt,
+    corsOrigin: env.CORS_ORIGIN,
   });
   app.listen(env.PORT, (error) => {
     if (error) {

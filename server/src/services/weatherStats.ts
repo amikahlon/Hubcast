@@ -1,4 +1,11 @@
-import type { DataMeta, WeatherDay, WeatherMetric, WeatherStatsResult } from '@hubcast/shared';
+import type {
+  DataMeta,
+  WeatherDay,
+  WeatherMetric,
+  WeatherStatsResult,
+  WeatherValue,
+  WeatherValues,
+} from '@hubcast/shared';
 import { WeatherMetricSchema } from '@hubcast/shared';
 import { WEATHER_METRICS, describeMetric, matchesMetric } from '../config/scoring.js';
 import type { Dataset } from '../data/load.js';
@@ -28,47 +35,122 @@ export function countMetric(
   return { matching, valid };
 }
 
+/** Non-missing values of one field. */
+function fieldValues(days: readonly WeatherDay[], field: Exclude<keyof WeatherDay, 'date'>) {
+  return days.flatMap((day) => (day[field] === null ? [] : [day[field]]));
+}
+
+function sumOrNull(values: readonly number[]): number | null {
+  return values.length === 0 ? null : values.reduce((sum, value) => sum + value, 0);
+}
+
+/** Totals (divided by `yearCount`) and extremes. `null` only when there is no data for a value. */
+export function weatherValues(days: readonly WeatherDay[], yearCount: number): WeatherValues {
+  const snowfall = fieldValues(days, 'snowfall');
+  const precipitation = fieldValues(days, 'precipitation');
+  const wind = fieldValues(days, 'windGustMax');
+  const tempMax = fieldValues(days, 'tempMax');
+  const tempMin = fieldValues(days, 'tempMin');
+  const perYear = (total: number | null) => (total === null ? null : round1(total / yearCount));
+  const max = (values: number[]) => (values.length === 0 ? null : Math.max(...values));
+  const min = (values: number[]) => (values.length === 0 ? null : Math.min(...values));
+
+  return {
+    totalSnowfallCm: perYear(sumOrNull(snowfall)),
+    totalPrecipitationMm: perYear(sumOrNull(precipitation)),
+    maxSnowfallCm: max(snowfall),
+    maxPrecipitationMm: max(precipitation),
+    maxWindGustKmh: max(wind),
+    highestTempC: max(tempMax),
+    lowestTempC: min(tempMin),
+  };
+}
+
+function describePeriod(year: number | undefined, startYear: number, endYear: number): string {
+  if (year !== undefined) {
+    return `Calendar year ${year} only. Day counts and totals are for ${year}.`;
+  }
+  return (
+    `Average per year over ${startYear}–${endYear}. Day counts and totals are yearly averages; ` +
+    `highest and lowest values are the extremes over the whole ${startYear}–${endYear} period.`
+  );
+}
+
+type HubWeatherStats = Omit<WeatherStatsResult['hubs'][number], 'rank'>;
+
+/**
+ * Sorts by a raw weather value: `lowestTempC` ascending, the others descending.
+ * Missing values go last; ties are ordered by hub ID.
+ */
+export function sortByWeatherValue(hubs: HubWeatherStats[], sortBy: WeatherValue) {
+  const direction = sortBy === 'lowestTempC' ? 1 : -1;
+  return [...hubs].sort((a, b) => {
+    const x = a.values[sortBy];
+    const y = b.values[sortBy];
+    if (x === null || y === null) {
+      if (x !== y) return x === null ? 1 : -1;
+    } else if (x !== y) {
+      return (x - y) * direction;
+    }
+    return a.hubId.localeCompare(b.hubId);
+  });
+}
+
 export function createWeatherStatsService(dataset: Dataset) {
   const years = dataYears(dataset.meta);
 
   return {
-    /** Days and percentage of days per metric: for one year, or the yearly average without one. */
-    getWeatherStats(hubIds: readonly string[], year?: number): WeatherStatsResult {
+    /**
+     * Day counts per metric plus raw totals and extremes: for one year, or the yearly average
+     * without one. All hubs without `hubIds`; sorted and ranked with `sortBy`.
+     */
+    getWeatherStats(
+      hubIds?: readonly string[],
+      year?: number,
+      sortBy?: WeatherValue,
+    ): WeatherStatsResult {
       if (year !== undefined && (year < years.startYear || year > years.endYear)) {
         throw new ServiceError(
           'OUT_OF_RANGE',
           `No weather data for ${year}. Data covers ${years.startYear}–${years.endYear}.`,
         );
       }
-      const ids = resolveHubIds(dataset, hubIds);
+      const ids = resolveHubIds(dataset, hubIds ?? [...dataset.weather.keys()]);
+      const hubs = ids.map((hubId): HubWeatherStats => {
+        const all = dataset.weather.get(hubId)?.days ?? [];
+        const days =
+          year === undefined ? all : all.filter((day) => day.date.startsWith(`${year}-`));
+        const yearCount = year === undefined ? years.count : 1;
+
+        return {
+          hubId,
+          values: weatherValues(days, yearCount),
+          metrics: WeatherMetricSchema.options.map((metric) => {
+            const config = WEATHER_METRICS[metric];
+            const { matching, valid } = countMetric(days, metric);
+            return {
+              metric,
+              label: config.label,
+              definition: describeMetric(config),
+              days: round1(matching / yearCount),
+              percentage: valid === 0 ? 0 : round1((matching / valid) * 100),
+            };
+          }),
+        };
+      });
 
       return {
+        sortBy: sortBy ?? null,
         period: {
           kind: year === undefined ? 'yearlyAverage' : 'year',
           startYear: year ?? years.startYear,
           endYear: year ?? years.endYear,
+          description: describePeriod(year, years.startYear, years.endYear),
         },
-        hubs: ids.map((hubId) => {
-          const all = dataset.weather.get(hubId)?.days ?? [];
-          const days =
-            year === undefined ? all : all.filter((day) => day.date.startsWith(`${year}-`));
-          const yearCount = year === undefined ? years.count : 1;
-
-          return {
-            hubId,
-            metrics: WeatherMetricSchema.options.map((metric) => {
-              const config = WEATHER_METRICS[metric];
-              const { matching, valid } = countMetric(days, metric);
-              return {
-                metric,
-                label: config.label,
-                definition: describeMetric(config),
-                days: round1(matching / yearCount),
-                percentage: valid === 0 ? 0 : round1((matching / valid) * 100),
-              };
-            }),
-          };
-        }),
+        hubs:
+          sortBy === undefined
+            ? hubs.map((hub) => ({ ...hub, rank: null }))
+            : sortByWeatherValue(hubs, sortBy).map((hub, index) => ({ ...hub, rank: index + 1 })),
       };
     },
   };

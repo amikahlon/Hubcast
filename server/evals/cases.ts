@@ -277,14 +277,16 @@ export function buildCases({ services }: EvalContext): EvalCase[] {
           hasNumber(textOf(r), hazardScore(services, 'phoenix-az', 'winter'), true),
         ),
         check('does not say Phoenix is the highest', (r) => {
-          // A sentence about Phoenix that says "highest" must also deny it.
+          // A sentence about Phoenix that says "highest" must also deny it, or restate the
+          // user's assumption and reject it ("Your question assumes ..., but ...").
           const claim = textOf(r)
             .split(/(?<=[.!?])\s+/)
             .find(
               (sentence) =>
                 /phoenix/i.test(sentence) &&
                 /highest/i.test(sentence) &&
-                !/\b(not|no|isn't|never)\b/i.test(sentence),
+                !/\b(not|no|isn't|never|incorrect|wrong)\b/i.test(sentence) &&
+                !/\bassum\w*\b.*\bbut\b/i.test(sentence),
             );
           return claim === undefined || `claims it: "${claim}"`;
         }),

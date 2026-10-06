@@ -38,10 +38,28 @@ Data files are committed. To refresh them: `npm run refresh-data`.
 | Command | Description |
 |---|---|
 | `npm run dev` | Run server and web |
+| `npm start` | Run the server only (production) |
 | `npm run typecheck` | Check types |
 | `npm run lint` | Lint and check formatting |
 | `npm run refresh-data` | Update weather and FEMA data |
 | `npm run eval` | Run agent evals (real Claude API) |
+
+## Deployment
+
+Backend on Railway, frontend on Vercel. The server runs with `tsx` (no build step) because the `shared` package is TypeScript source.
+
+**Railway** (repo root, no Dockerfile):
+
+- Build command: `npm install`. Start command: `npm start`.
+- Variables: `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`, `CORS_ORIGIN` (the production Vercel URL, no trailing slash). Railway sets `PORT`.
+- Health check path: `/health`.
+
+**Vercel**:
+
+- Root directory: repo root. Install command: `npm install`. Build command: `npm run build -w web`. Output directory: `web/dist`.
+- Variable: `VITE_API_URL` (the Railway URL). It is public, so never put `ANTHROPIC_API_KEY` in Vercel.
+
+CORS allows only `CORS_ORIGIN` (default `http://localhost:5173`). `POST /chat` is limited to 10 requests per minute per IP and returns 429 `RATE_LIMITED` beyond that.
 
 ## Evals
 

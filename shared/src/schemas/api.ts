@@ -6,6 +6,7 @@ export const ApiErrorCodeSchema = z.enum([
   'VALIDATION_ERROR',
   'NOT_FOUND',
   'AGENT_ERROR',
+  'RATE_LIMITED',
   'INTERNAL_ERROR',
 ]);
 export type ApiErrorCode = z.infer<typeof ApiErrorCodeSchema>;
