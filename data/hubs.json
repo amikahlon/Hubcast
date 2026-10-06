@@ -1,0 +1,211 @@
+[
+  {
+    "id": "boston-ma",
+    "name": "Boston Hub",
+    "city": "Boston",
+    "state": "MA",
+    "region": "Northeast",
+    "lat": 42.3601,
+    "lon": -71.0589,
+    "countyFips": "25025",
+    "countyName": "Suffolk County"
+  },
+  {
+    "id": "newark-nj",
+    "name": "Newark Hub",
+    "city": "Newark",
+    "state": "NJ",
+    "region": "Northeast",
+    "lat": 40.7357,
+    "lon": -74.1724,
+    "countyFips": "34013",
+    "countyName": "Essex County"
+  },
+  {
+    "id": "philadelphia-pa",
+    "name": "Philadelphia Hub",
+    "city": "Philadelphia",
+    "state": "PA",
+    "region": "Northeast",
+    "lat": 39.9526,
+    "lon": -75.1652,
+    "countyFips": "42101",
+    "countyName": "Philadelphia County"
+  },
+  {
+    "id": "chicago-il",
+    "name": "Chicago Hub",
+    "city": "Chicago",
+    "state": "IL",
+    "region": "Midwest",
+    "lat": 41.8781,
+    "lon": -87.6298,
+    "countyFips": "17031",
+    "countyName": "Cook County"
+  },
+  {
+    "id": "minneapolis-mn",
+    "name": "Minneapolis Hub",
+    "city": "Minneapolis",
+    "state": "MN",
+    "region": "Midwest",
+    "lat": 44.9778,
+    "lon": -93.265,
+    "countyFips": "27053",
+    "countyName": "Hennepin County"
+  },
+  {
+    "id": "detroit-mi",
+    "name": "Detroit Hub",
+    "city": "Detroit",
+    "state": "MI",
+    "region": "Midwest",
+    "lat": 42.3314,
+    "lon": -83.0458,
+    "countyFips": "26163",
+    "countyName": "Wayne County"
+  },
+  {
+    "id": "kansas-city-mo",
+    "name": "Kansas City Hub",
+    "city": "Kansas City",
+    "state": "MO",
+    "region": "Midwest",
+    "lat": 39.0997,
+    "lon": -94.5786,
+    "countyFips": "29095",
+    "countyName": "Jackson County"
+  },
+  {
+    "id": "indianapolis-in",
+    "name": "Indianapolis Hub",
+    "city": "Indianapolis",
+    "state": "IN",
+    "region": "Midwest",
+    "lat": 39.7684,
+    "lon": -86.1581,
+    "countyFips": "18097",
+    "countyName": "Marion County"
+  },
+  {
+    "id": "miami-fl",
+    "name": "Miami Hub",
+    "city": "Miami",
+    "state": "FL",
+    "region": "South",
+    "lat": 25.7617,
+    "lon": -80.1918,
+    "countyFips": "12086",
+    "countyName": "Miami-Dade County"
+  },
+  {
+    "id": "houston-tx",
+    "name": "Houston Hub",
+    "city": "Houston",
+    "state": "TX",
+    "region": "South",
+    "lat": 29.7604,
+    "lon": -95.3698,
+    "countyFips": "48201",
+    "countyName": "Harris County"
+  },
+  {
+    "id": "dallas-tx",
+    "name": "Dallas Hub",
+    "city": "Dallas",
+    "state": "TX",
+    "region": "South",
+    "lat": 32.7767,
+    "lon": -96.797,
+    "countyFips": "48113",
+    "countyName": "Dallas County"
+  },
+  {
+    "id": "atlanta-ga",
+    "name": "Atlanta Hub",
+    "city": "Atlanta",
+    "state": "GA",
+    "region": "South",
+    "lat": 33.749,
+    "lon": -84.388,
+    "countyFips": "13121",
+    "countyName": "Fulton County"
+  },
+  {
+    "id": "new-orleans-la",
+    "name": "New Orleans Hub",
+    "city": "New Orleans",
+    "state": "LA",
+    "region": "South",
+    "lat": 29.9511,
+    "lon": -90.0715,
+    "countyFips": "22071",
+    "countyName": "Orleans Parish"
+  },
+  {
+    "id": "memphis-tn",
+    "name": "Memphis Hub",
+    "city": "Memphis",
+    "state": "TN",
+    "region": "South",
+    "lat": 35.1495,
+    "lon": -90.049,
+    "countyFips": "47157",
+    "countyName": "Shelby County"
+  },
+  {
+    "id": "denver-co",
+    "name": "Denver Hub",
+    "city": "Denver",
+    "state": "CO",
+    "region": "West",
+    "lat": 39.7392,
+    "lon": -104.9903,
+    "countyFips": "08031",
+    "countyName": "Denver County"
+  },
+  {
+    "id": "phoenix-az",
+    "name": "Phoenix Hub",
+    "city": "Phoenix",
+    "state": "AZ",
+    "region": "West",
+    "lat": 33.4484,
+    "lon": -112.074,
+    "countyFips": "04013",
+    "countyName": "Maricopa County"
+  },
+  {
+    "id": "los-angeles-ca",
+    "name": "Los Angeles Hub",
+    "city": "Los Angeles",
+    "state": "CA",
+    "region": "West",
+    "lat": 34.0522,
+    "lon": -118.2437,
+    "countyFips": "06037",
+    "countyName": "Los Angeles County"
+  },
+  {
+    "id": "sacramento-ca",
+    "name": "Sacramento Hub",
+    "city": "Sacramento",
+    "state": "CA",
+    "region": "West",
+    "lat": 38.5816,
+    "lon": -121.4944,
+    "countyFips": "06067",
+    "countyName": "Sacramento County"
+  },
+  {
+    "id": "salt-lake-city-ut",
+    "name": "Salt Lake City Hub",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "region": "West",
+    "lat": 40.7608,
+    "lon": -111.891,
+    "countyFips": "49035",
+    "countyName": "Salt Lake County"
+  }
+]
