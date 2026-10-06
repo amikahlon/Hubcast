@@ -10,7 +10,7 @@ import type { HubsService } from './services/hubs.js';
 export interface AppDeps {
   hubsService: HubsService;
   chatService: ChatService;
-  /** Date of the last data refresh; null until `npm run refresh-data` has run (Phase 2). */
+  /** Date of the last data refresh. */
   dataAsOf: string | null;
   corsOrigin: string;
 }

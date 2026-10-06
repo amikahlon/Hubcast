@@ -4,11 +4,9 @@ import { rateLimit } from 'express-rate-limit';
 import { AgentError, type ChatService } from '../agent/chat.js';
 import { HttpError, parseRequest, sendValidated } from './http.js';
 
-// POST /chat is the start of the AI flow: route -> chat -> agent -> tools -> services.
-export function chatRouter(deps: { chatService: ChatService }): Router {
-  const router = Router();
-  // Protects the Anthropic API from basic abuse: 10 chat requests per minute per IP.
-  const chatLimit = rateLimit({
+// Limit each IP to 10 chat requests per minute.
+function createChatRateLimit() {
+  return rateLimit({
     windowMs: 60_000,
     limit: 10,
     standardHeaders: 'draft-7',
@@ -23,7 +21,12 @@ export function chatRouter(deps: { chatService: ChatService }): Router {
       );
     },
   });
-  router.post('/chat', chatLimit, async (req, res) => {
+}
+
+// POST /chat: validate input -> run chat -> validate response.
+export function chatRouter(deps: { chatService: ChatService }): Router {
+  const router = Router();
+  router.post('/chat', createChatRateLimit(), async (req, res) => {
     const { threadId, message } = parseRequest(ChatRequestSchema, req.body);
     try {
       const result = await deps.chatService.chat(threadId, message);
