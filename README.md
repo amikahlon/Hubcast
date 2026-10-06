@@ -1,102 +1,44 @@
-# Weather Risk Assistant
+# Hubcast
 
-A chat assistant that explains weather risk for a logistics company's 19 US hubs.
+A chat assistant that explains weather risk for 19 fictional logistics hubs in real US cities. It uses historical weather from Open-Meteo and county hazard data from the FEMA National Risk Index.
 
-Example questions:
-
-- Which hubs in the Midwest are most exposed to winter disruption?
-- Compare Miami and Houston in terms of hurricane and flood exposure.
-- What percentage of days in Denver last year had snowfall?
-- Why is the Dallas hub's risk high?
+Built with React, Vite, Express, TypeScript, LangChain, LangGraph, Claude and Zod.
 
 ## How it works
 
-A Claude agent calls tools that return statistics, FEMA hazard data and risk scores calculated in TypeScript. Claude explains the results and returns a Zod-validated response:
-
-```json
-{ "answer": "...", "hubIds": [], "explanation": "...", "assumptions": [] }
+```text
+React UI -> Express API -> Chat service -> Agent <-> Tools -> Services -> JSON data
 ```
 
-Hubs are fictional, located in real cities with real data.
+The agent chooses from four tools: list hubs, get weather statistics, get hazard exposure and get risk scores. Services calculate the statistics, scores and rankings. Tool results return to the agent, which writes the answer and explanation.
 
-**Stack:** React + Vite, Express, TypeScript, LangGraph, Claude API, Zod.
+The server validates the answer with Zod and adds the tools used, sources and data date. LangGraph keeps conversation history in memory by thread ID so follow-up questions keep their context.
 
-**Data:** [Open-Meteo](https://open-meteo.com/) historical weather (last 3 full years) and the [FEMA National Risk Index](https://hazards.fema.gov/nri/).
+## Structure
 
-## Getting started
+```text
+web/src/                 React chat UI and API client
+server/src/
+  routes/                HTTP endpoints and request validation
+  agent/                 Agent loop, prompt, memory and answer validation
+  tools/                 Four tools that call the services
+  services/              Weather statistics, risk scoring and rankings
+  config/, data/         Settings and data loading
+  runtime.ts             Connects services, tools and the agent
+shared/src/              Zod schemas and shared types
+data/                    Hub, weather and FEMA JSON files
+server/scripts/          Data refresh
+```
+
+## Run locally
+
+Use Node.js 22.12 or newer. Copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`.
+
+From the project root:
 
 ```bash
 npm install
-cp .env.example .env   # set ANTHROPIC_API_KEY and ANTHROPIC_MODEL
 npm run dev
 ```
 
-Data files are committed. To refresh them: `npm run refresh-data`.
-
-## Scripts
-
-| Command | Description |
-|---|---|
-| `npm run dev` | Run server and web |
-| `npm start` | Run the server only (production) |
-| `npm run typecheck` | Check types |
-| `npm run lint` | Lint and check formatting |
-| `npm run refresh-data` | Update weather and FEMA data |
-| `npm run eval` | Run agent evals (real Claude API) |
-
-## Deployment
-
-Backend on Railway, frontend on Vercel. The server runs with `tsx` (no build step) because the `shared` package is TypeScript source.
-
-**Railway** (repo root, no Dockerfile):
-
-- Build command: `npm install`. Start command: `npm start`.
-- Variables: `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`, `CORS_ORIGIN` (the production Vercel URL, no trailing slash). Railway sets `PORT`.
-- Health check path: `/health`.
-
-**Vercel**:
-
-- Root directory: repo root. Install command: `npm install`. Build command: `npm run build -w web`. Output directory: `web/dist`.
-- Variable: `VITE_API_URL` (the Railway URL). It is public, so never put `ANTHROPIC_API_KEY` in Vercel.
-
-CORS allows only `CORS_ORIGIN` (default `http://localhost:5173`). `POST /chat` is limited to 10 requests per minute per IP and returns 429 `RATE_LIMITED` beyond that.
-
-## Evals
-
-The evals check the real agent with 10 questions: rankings, comparisons, historical weather, follow-up memory, unknown hubs, unsupported years and hazards, false premises and missing data. Each case uses simple code checks, for example that the right hub and the correct numbers from the services appear in the answer and that no data is invented. There is no LLM judge.
-
-They run against the real Claude model, so they need `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` in `.env` and they use API credits.
-
-```bash
-npm run eval                      # all cases
-npm run eval -- ranking-global    # one case
-```
-
-`PASS` means every check of the case passed. `FAIL` lists the failed checks and prints the answer. The last line shows the pass rate, and the command exits with an error if any case fails. Claude is not fully deterministic, so a case can pass on one run and fail on the next. The cases are in `server/evals/cases.ts`.
-
-## Project structure
-
-```
-data/                    weather, FEMA and hub data (generated by refresh-data)
-shared/src/              Zod schemas and types used by server and web
-server/src/
-  routes/                HTTP endpoints
-  agent/                 chat.ts, agent.ts, prompt.ts: the Claude agent
-  tools/                 the 4 tools Claude can call, one file each
-  services/              all calculations: stats, scoring, ranking
-  config/, data/         env, scoring parameters, data loading
-server/scripts/          refresh-data
-server/evals/            agent evals
-web/src/                 chat UI
-```
-
-A chat message flows: route -> chat -> agent -> tools -> services. Claude chooses tools and explains the results; TypeScript calculates every number.
-
-## Docs
-
-- `docs/DESIGN.md`: architecture and decisions
-- `docs/PLAN.md`: implementation phases
-
-## Limitations
-
-Weather data is modelled; FEMA data is county-level; chat history is in memory only.
+Open http://localhost:5173. The API runs on port 3001 by default. Data files are included, so no data download is needed to start.
