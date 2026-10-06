@@ -32,6 +32,18 @@ data/                    Hub, weather and FEMA JSON files
 server/scripts/          Data refresh
 ```
 
+## Development process
+
+The project was built with AI-assisted development using Claude and Claude Code.
+
+The `docs/` directory documents the planning and design process:
+
+- `DESIGN.md` describes the architecture, data flow, scoring approach, tools, assumptions and limitations.
+- `PLAN.md` contains the implementation plan and development phases.
+- `plans/` contains the detailed phase-by-phase plans used during implementation.
+
+These documents were used as working context for Claude Code throughout development. 
+
 ## Run locally
 
 Use Node.js 22.12 or newer. Copy `.env.example` to `.env` and set `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL`.
