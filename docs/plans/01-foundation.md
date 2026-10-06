@@ -44,9 +44,6 @@
    - Hubs service filters
    - API: `/health`, `/hubs`, invalid query returns 400
 
-7. **Docs**
-   - Create `docs/session-log.md` with the planning session and Phase 1 entries
-
 ## Done when
 
 - `npm run dev` starts server and web

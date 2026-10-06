@@ -1,0 +1,933 @@
+{
+  "boston-ma": {
+    "countyFips": "25025",
+    "hazards": {
+      "winterWeather": {
+        "score": 44.143857415658815,
+        "rating": "Relatively Low"
+      },
+      "iceStorm": {
+        "score": 79.87337554148617,
+        "rating": "Relatively Moderate"
+      },
+      "coldWave": {
+        "score": 94.17938931297711,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 94.72010178117048,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": 92.2,
+        "rating": "Relatively High"
+      },
+      "hurricane": {
+        "score": 93.6587400917814,
+        "rating": "Relatively High"
+      },
+      "tornado": {
+        "score": 75.3498727735369,
+        "rating": "Relatively Moderate"
+      },
+      "strongWind": {
+        "score": 52.035623409669206,
+        "rating": "Relatively Moderate"
+      },
+      "hail": {
+        "score": 76.94020356234097,
+        "rating": "Relatively Moderate"
+      },
+      "heatWave": {
+        "score": 97.4630700064226,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 8.969465648854962,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "newark-nj": {
+    "countyFips": "34013",
+    "hazards": {
+      "winterWeather": {
+        "score": 97.00827498408657,
+        "rating": "Very High"
+      },
+      "iceStorm": {
+        "score": 78.70709763412196,
+        "rating": "Relatively Moderate"
+      },
+      "coldWave": {
+        "score": 95.41984732824427,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 98.82315521628499,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": 65.4,
+        "rating": "Relatively Moderate"
+      },
+      "hurricane": {
+        "score": 91.82311222361285,
+        "rating": "Relatively Moderate"
+      },
+      "tornado": {
+        "score": 94.91094147582697,
+        "rating": "Relatively High"
+      },
+      "strongWind": {
+        "score": 98.66412213740458,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 86.80025445292621,
+        "rating": "Relatively Moderate"
+      },
+      "heatWave": {
+        "score": 98.97238278741169,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 10.591603053435113,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "philadelphia-pa": {
+    "countyFips": "42101",
+    "hazards": {
+      "winterWeather": {
+        "score": 99.77721196690005,
+        "rating": "Very High"
+      },
+      "iceStorm": {
+        "score": 94.16861046317894,
+        "rating": "Relatively High"
+      },
+      "coldWave": {
+        "score": 99.80916030534351,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 99.58651399491094,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": 85.39999999999999,
+        "rating": "Relatively High"
+      },
+      "hurricane": {
+        "score": 94.28452231956612,
+        "rating": "Relatively High"
+      },
+      "tornado": {
+        "score": 98.66412213740458,
+        "rating": "Relatively High"
+      },
+      "strongWind": {
+        "score": 97.86895674300254,
+        "rating": "Relatively High"
+      },
+      "hail": {
+        "score": 95.13358778625954,
+        "rating": "Relatively High"
+      },
+      "heatWave": {
+        "score": 99.9678869621066,
+        "rating": "Very High"
+      },
+      "wildfire": {
+        "score": 28.68956743002545,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "chicago-il": {
+    "countyFips": "17031",
+    "hazards": {
+      "winterWeather": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "iceStorm": {
+        "score": 97.1676107964012,
+        "rating": "Very High"
+      },
+      "coldWave": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 99.93638676844783,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": 44,
+        "rating": "Relatively Low"
+      },
+      "hurricane": {
+        "score": 48.894451397580305,
+        "rating": "Very Low"
+      },
+      "tornado": {
+        "score": 99.96819338422391,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 99.55470737913485,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 99.14122137404581,
+        "rating": "Relatively High"
+      },
+      "heatWave": {
+        "score": 99.83943481053308,
+        "rating": "Very High"
+      },
+      "wildfire": {
+        "score": 55.78880407124682,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "minneapolis-mn": {
+    "countyFips": "27053",
+    "hazards": {
+      "winterWeather": {
+        "score": 97.42202418841502,
+        "rating": "Very High"
+      },
+      "iceStorm": {
+        "score": 79.70676441186271,
+        "rating": "Relatively Moderate"
+      },
+      "coldWave": {
+        "score": 99.84096692111959,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 98.02798982188295,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "tornado": {
+        "score": 99.61832061068702,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 98.85496183206108,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 99.58651399491094,
+        "rating": "Very High"
+      },
+      "heatWave": {
+        "score": 99.10083493898523,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 74.87277353689568,
+        "rating": "Relatively Low"
+      }
+    }
+  },
+  "detroit-mi": {
+    "countyFips": "26163",
+    "hazards": {
+      "winterWeather": {
+        "score": 94.74856779121579,
+        "rating": "Relatively High"
+      },
+      "iceStorm": {
+        "score": 99.00033322225926,
+        "rating": "Very High"
+      },
+      "coldWave": {
+        "score": 99.74554707379136,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 99.39567430025446,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": 49.6,
+        "rating": "Relatively Low"
+      },
+      "hurricane": {
+        "score": 57.78055903212349,
+        "rating": "Very Low"
+      },
+      "tornado": {
+        "score": 99.49109414758269,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 99.71374045801527,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 46.533078880407125,
+        "rating": "Relatively Low"
+      },
+      "heatWave": {
+        "score": 99.29351316634553,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 54.38931297709924,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "kansas-city-mo": {
+    "countyFips": "29095",
+    "hazards": {
+      "winterWeather": {
+        "score": 91.1839592616168,
+        "rating": "Relatively High"
+      },
+      "iceStorm": {
+        "score": 82.33922025991336,
+        "rating": "Relatively High"
+      },
+      "coldWave": {
+        "score": 95.96055979643766,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 96.50127226463104,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "tornado": {
+        "score": 99.45928753180662,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 96.0559796437659,
+        "rating": "Relatively High"
+      },
+      "hail": {
+        "score": 99.36386768447836,
+        "rating": "Very High"
+      },
+      "heatWave": {
+        "score": 99.13294797687861,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 49.17302798982188,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "indianapolis-in": {
+    "countyFips": "18097",
+    "hazards": {
+      "winterWeather": {
+        "score": 93.69828134945894,
+        "rating": "Relatively High"
+      },
+      "iceStorm": {
+        "score": 85.33822059313562,
+        "rating": "Relatively High"
+      },
+      "coldWave": {
+        "score": 98.69592875318067,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 98.2824427480916,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": 34.08427200667501,
+        "rating": "Very Low"
+      },
+      "tornado": {
+        "score": 99.01399491094148,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 98.72773536895674,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 93.63867684478372,
+        "rating": "Relatively Moderate"
+      },
+      "heatWave": {
+        "score": 98.65125240847784,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 22.296437659033078,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "miami-fl": {
+    "countyFips": "12086",
+    "hazards": {
+      "winterWeather": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "iceStorm": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "coldWave": {
+        "score": 99.52290076335878,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 99.71374045801527,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": 99.6,
+        "rating": "Very High"
+      },
+      "hurricane": {
+        "score": 99.95828118481434,
+        "rating": "Very High"
+      },
+      "tornado": {
+        "score": 98.72773536895674,
+        "rating": "Relatively High"
+      },
+      "strongWind": {
+        "score": 82.44274809160305,
+        "rating": "Relatively Moderate"
+      },
+      "hail": {
+        "score": 96.56488549618321,
+        "rating": "Relatively High"
+      },
+      "heatWave": {
+        "score": 99.26140012845215,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 96.85114503816794,
+        "rating": "Relatively Moderate"
+      }
+    }
+  },
+  "houston-tx": {
+    "countyFips": "48201",
+    "hazards": {
+      "winterWeather": {
+        "score": 88.82877148313176,
+        "rating": "Relatively High"
+      },
+      "iceStorm": {
+        "score": 99.56681106297901,
+        "rating": "Very High"
+      },
+      "coldWave": {
+        "score": 99.90458015267176,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 99.96819338422391,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": 83.2,
+        "rating": "Relatively High"
+      },
+      "hurricane": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "tornado": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 99.26844783715013,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 91.98473282442748,
+        "rating": "Relatively Moderate"
+      },
+      "heatWave": {
+        "score": 99.71098265895954,
+        "rating": "Very High"
+      },
+      "wildfire": {
+        "score": 85.43256997455471,
+        "rating": "Relatively Low"
+      }
+    }
+  },
+  "dallas-tx": {
+    "countyFips": "48113",
+    "hazards": {
+      "winterWeather": {
+        "score": 98.66327180140038,
+        "rating": "Very High"
+      },
+      "iceStorm": {
+        "score": 99.66677774075309,
+        "rating": "Very High"
+      },
+      "coldWave": {
+        "score": 99.87277353689568,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 99.55470737913485,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": 73.55027117229871,
+        "rating": "Relatively Low"
+      },
+      "tornado": {
+        "score": 99.84096692111959,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 98.47328244274809,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "heatWave": {
+        "score": 99.93577392421324,
+        "rating": "Very High"
+      },
+      "wildfire": {
+        "score": 80.27989821882952,
+        "rating": "Relatively Low"
+      }
+    }
+  },
+  "atlanta-ga": {
+    "countyFips": "13121",
+    "hazards": {
+      "winterWeather": {
+        "score": 72.43793761935073,
+        "rating": "Relatively Moderate"
+      },
+      "iceStorm": {
+        "score": 90.63645451516162,
+        "rating": "Relatively High"
+      },
+      "coldWave": {
+        "score": 89.82188295165395,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 97.67811704834605,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": 74.92699207342511,
+        "rating": "Relatively Low"
+      },
+      "tornado": {
+        "score": 97.01017811704835,
+        "rating": "Relatively High"
+      },
+      "strongWind": {
+        "score": 93.57506361323156,
+        "rating": "Relatively High"
+      },
+      "hail": {
+        "score": 95.8969465648855,
+        "rating": "Relatively High"
+      },
+      "heatWave": {
+        "score": 92.38921001926782,
+        "rating": "Relatively Moderate"
+      },
+      "wildfire": {
+        "score": 52.894402035623415,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "new-orleans-la": {
+    "countyFips": "22071",
+    "hazards": {
+      "winterWeather": {
+        "score": 84.53214513049014,
+        "rating": "Relatively Moderate"
+      },
+      "iceStorm": {
+        "score": 64.64511829390204,
+        "rating": "Relatively Moderate"
+      },
+      "coldWave": {
+        "score": 97.67811704834605,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 93.51145038167938,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": 81.2,
+        "rating": "Relatively Moderate"
+      },
+      "hurricane": {
+        "score": 99.66624947851481,
+        "rating": "Very High"
+      },
+      "tornado": {
+        "score": 71.56488549618321,
+        "rating": "Relatively Moderate"
+      },
+      "strongWind": {
+        "score": 46.81933842239186,
+        "rating": "Relatively Low"
+      },
+      "hail": {
+        "score": 92.84351145038168,
+        "rating": "Relatively Moderate"
+      },
+      "heatWave": {
+        "score": 97.23827874116891,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 48.091603053435115,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "memphis-tn": {
+    "countyFips": "47157",
+    "hazards": {
+      "winterWeather": {
+        "score": 88.66963717377466,
+        "rating": "Relatively High"
+      },
+      "iceStorm": {
+        "score": 91.23625458180607,
+        "rating": "Relatively High"
+      },
+      "coldWave": {
+        "score": 99.77735368956743,
+        "rating": "Very High"
+      },
+      "inlandFlooding": {
+        "score": 98.66412213740458,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": 67.1255736337088,
+        "rating": "Relatively Low"
+      },
+      "tornado": {
+        "score": 99.77735368956743,
+        "rating": "Very High"
+      },
+      "strongWind": {
+        "score": 87.69083969465649,
+        "rating": "Relatively High"
+      },
+      "hail": {
+        "score": 12.818066157760812,
+        "rating": "Very Low"
+      },
+      "heatWave": {
+        "score": 99.55041746949261,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 71.0559796437659,
+        "rating": "Relatively Low"
+      }
+    }
+  },
+  "denver-co": {
+    "countyFips": "08031",
+    "hazards": {
+      "winterWeather": {
+        "score": 91.94780394653087,
+        "rating": "Relatively High"
+      },
+      "iceStorm": {
+        "score": 12.129290236587805,
+        "rating": "Very Low"
+      },
+      "coldWave": {
+        "score": 92.14376590330788,
+        "rating": "Relatively High"
+      },
+      "inlandFlooding": {
+        "score": 95.26081424936386,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "tornado": {
+        "score": 97.86895674300254,
+        "rating": "Relatively High"
+      },
+      "strongWind": {
+        "score": 96.08778625954199,
+        "rating": "Relatively High"
+      },
+      "hail": {
+        "score": 99.87277353689568,
+        "rating": "Very High"
+      },
+      "heatWave": {
+        "score": 71.48362235067437,
+        "rating": "Relatively Low"
+      },
+      "wildfire": {
+        "score": 60.62340966921119,
+        "rating": "Very Low"
+      }
+    }
+  },
+  "phoenix-az": {
+    "countyFips": "04013",
+    "hazards": {
+      "winterWeather": {
+        "score": 38.733290897517506,
+        "rating": "Relatively Low"
+      },
+      "iceStorm": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "coldWave": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "inlandFlooding": {
+        "score": 99.87277353689568,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "hurricane": {
+        "score": 26.574885273258243,
+        "rating": "Very Low"
+      },
+      "tornado": {
+        "score": 84.00127226463104,
+        "rating": "Relatively Moderate"
+      },
+      "strongWind": {
+        "score": 99.07760814249363,
+        "rating": "Very High"
+      },
+      "hail": {
+        "score": 99.52290076335878,
+        "rating": "Very High"
+      },
+      "heatWave": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "wildfire": {
+        "score": 99.61832061068702,
+        "rating": "Relatively High"
+      }
+    }
+  },
+  "los-angeles-ca": {
+    "countyFips": "06037",
+    "hazards": {
+      "winterWeather": {
+        "score": 74.76129853596434,
+        "rating": "Relatively Moderate"
+      },
+      "iceStorm": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "coldWave": {
+        "score": 5.820610687022901,
+        "rating": "Very Low"
+      },
+      "inlandFlooding": {
+        "score": 100,
+        "rating": "Very High"
+      },
+      "coastalFlooding": {
+        "score": 90,
+        "rating": "Relatively High"
+      },
+      "hurricane": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "tornado": {
+        "score": 97.67811704834605,
+        "rating": "Relatively High"
+      },
+      "strongWind": {
+        "score": 75.19083969465649,
+        "rating": "Relatively Moderate"
+      },
+      "hail": {
+        "score": 93.03435114503816,
+        "rating": "Relatively Moderate"
+      },
+      "heatWave": {
+        "score": 99.32562620423893,
+        "rating": "Relatively High"
+      },
+      "wildfire": {
+        "score": 99.93638676844783,
+        "rating": "Very High"
+      }
+    }
+  },
+  "sacramento-ca": {
+    "countyFips": "06067",
+    "hazards": {
+      "winterWeather": {
+        "score": 6.556333545512412,
+        "rating": "Very Low"
+      },
+      "iceStorm": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "coldWave": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "inlandFlooding": {
+        "score": 98.9821882951654,
+        "rating": "Relatively High"
+      },
+      "coastalFlooding": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "hurricane": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "tornado": {
+        "score": 65.04452926208651,
+        "rating": "Relatively Moderate"
+      },
+      "strongWind": {
+        "score": 7.601781170483461,
+        "rating": "Very Low"
+      },
+      "hail": {
+        "score": 53.912213740458014,
+        "rating": "Relatively Low"
+      },
+      "heatWave": {
+        "score": 96.11432241490046,
+        "rating": "Relatively Moderate"
+      },
+      "wildfire": {
+        "score": 95.92875318066157,
+        "rating": "Relatively Moderate"
+      }
+    }
+  },
+  "salt-lake-city-ut": {
+    "countyFips": "49035",
+    "hazards": {
+      "winterWeather": {
+        "score": 98.72692552514322,
+        "rating": "Very High"
+      },
+      "iceStorm": {
+        "score": 13.7620793068977,
+        "rating": "Very Low"
+      },
+      "coldWave": {
+        "score": 32.63358778625955,
+        "rating": "Relatively Low"
+      },
+      "inlandFlooding": {
+        "score": 92.93893129770993,
+        "rating": "Relatively Moderate"
+      },
+      "coastalFlooding": {
+        "score": 0,
+        "rating": "No Rating"
+      },
+      "hurricane": {
+        "score": null,
+        "rating": "Not Applicable"
+      },
+      "tornado": {
+        "score": 70.96055979643766,
+        "rating": "Relatively Moderate"
+      },
+      "strongWind": {
+        "score": 68.44783715012723,
+        "rating": "Relatively Moderate"
+      },
+      "hail": {
+        "score": 68.09796437659033,
+        "rating": "Relatively Low"
+      },
+      "heatWave": {
+        "score": 92.93513166345537,
+        "rating": "Relatively Moderate"
+      },
+      "wildfire": {
+        "score": 98.34605597964376,
+        "rating": "Relatively High"
+      }
+    }
+  }
+}

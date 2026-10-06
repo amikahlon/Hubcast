@@ -6,7 +6,6 @@ Weather risk chat assistant for 19 logistics hubs. See `DESIGN.md` and `PLAN.md`
 
 - Read `DESIGN.md` and the current phase plan in `docs/plans/` before coding.
 - Work on one phase at a time. Ask before changing the design.
-- After each session, add a short entry to `docs/session-log.md`.
 
 ## Rules
 

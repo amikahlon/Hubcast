@@ -1,11 +1,14 @@
 import express, { type Express } from 'express';
+import type { ChatService } from './agent/chat.js';
 import { errorHandler, notFoundHandler } from './middleware/errors.js';
+import { chatRouter } from './routes/chat.js';
 import { healthRouter } from './routes/health.js';
 import { hubsRouter } from './routes/hubs.js';
 import type { HubsService } from './services/hubs.js';
 
 export interface AppDeps {
   hubsService: HubsService;
+  chatService: ChatService;
   /** Date of the last data refresh; null until `npm run refresh-data` has run (Phase 2). */
   dataAsOf: string | null;
 }
@@ -17,6 +20,7 @@ export function createApp(deps: AppDeps): Express {
 
   app.use(healthRouter(deps));
   app.use(hubsRouter(deps));
+  app.use(chatRouter(deps));
 
   app.use(notFoundHandler);
   app.use(errorHandler);

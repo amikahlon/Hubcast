@@ -46,7 +46,6 @@ Data files are committed. To refresh them: `npm run refresh-data`.
 
 - `DESIGN.md`: architecture and decisions
 - `PLAN.md`: implementation phases
-- `docs/session-log.md`: development log
 
 ## Limitations
 

@@ -15,7 +15,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit && npm run typecheck --workspaces",
     "lint": "eslint . && prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "refresh-data": "npm run refresh-data -w server"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

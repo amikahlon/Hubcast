@@ -80,7 +80,7 @@ Six hazards: winter, flood, hurricane, severeStorm, heat, wildfire.
 | Hazard      | Weather metrics                | FEMA NRI hazards                     |
 | ----------- | ------------------------------ | ------------------------------------ |
 | winter      | heavy snow days, freezing days | Winter Weather, Ice Storm, Cold Wave |
-| flood       | heavy rain days                | Riverine Flooding, Coastal Flooding  |
+| flood       | heavy rain days                | Inland Flooding, Coastal Flooding    |
 | severeStorm | high wind gust days            | Tornado, Strong Wind, Hail           |
 | heat        | hot days                       | Heat Wave                            |
 | hurricane   | —                              | Hurricane                            |
@@ -132,7 +132,7 @@ server/src/      routes/, agent/, tools/, services/, config/, data/
 server/scripts/  refresh-data.ts
 server/evals/    cases.json, run.ts
 web/src/         chat UI
-docs/            plans/, session-log.md
+docs/            plans/
 ```
 
 ## Limitations and out of scope
