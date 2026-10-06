@@ -15,12 +15,15 @@
     "@langchain/anthropic": "^1.5.12",
     "@langchain/core": "^1.2.14",
     "@langchain/langgraph": "^1.4.19",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.7.1",
     "langchain": "^1.5.15",
+    "tsx": "^4.23.15",
     "zod": "^4.6.5"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6",
-    "tsx": "^4.23.15"
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6"
   }
 }

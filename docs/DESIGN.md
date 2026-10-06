@@ -30,7 +30,7 @@ Stack: React + Vite, Node.js + TypeScript + Express, LangChain/LangGraph, Anthro
 | Tool                  | Input                | Returns                                                                     |
 | --------------------- | -------------------- | --------------------------------------------------------------------------- |
 | `list_hubs`           | `region?`, `state?`  | Matching hubs                                                               |
-| `get_weather_stats`   | `hubIds`, `year?`    | Day counts and percentages per weather metric (one year, or yearly average) |
+| `get_weather_stats`   | `hubIds?`, `year?`, `sortBy?` | Day counts and percentages per weather metric, plus totals (snowfall, precipitation) and extremes (max snowfall, precipitation, wind gust, highest/lowest temperature); one year, or yearly average; `sortBy` ranks hubs by one of these values |
 | `get_hazard_exposure` | `hubIds`, `hazards?` | FEMA NRI source data per hazard                                             |
 | `get_risk_scores`     | `hubIds?`, `sortBy?` | Ranked hazard and overall scores with risk drivers                          |
 
@@ -60,7 +60,7 @@ The server adds `toolCalls`, `sources` and `dataAsOf` from the tool results.
 | GET    | `/hubs`   | List hubs (`?region=&state=`)                                                           |
 | GET    | `/health` | Status and data dates                                                                   |
 
-Errors: `{ error: { code, message } }` with `VALIDATION_ERROR` (400), `NOT_FOUND` (404), `AGENT_ERROR` (502), `INTERNAL_ERROR` (500).
+Errors: `{ error: { code, message } }` with `VALIDATION_ERROR` (400), `NOT_FOUND` (404), `AGENT_ERROR` (502), `RATE_LIMITED` (429, `POST /chat` only: 10 requests per minute per IP), `INTERNAL_ERROR` (500).
 
 ## Data
 

@@ -9,6 +9,8 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    // VITE_API_URL is read from the root .env too.
+    envDir: '..',
     server: {
       port: 5173,
       proxy: {

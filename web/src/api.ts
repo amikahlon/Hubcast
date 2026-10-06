@@ -6,6 +6,10 @@ import {
   type Hub,
 } from '@hubcast/shared';
 
+/** Backend URL in production (Vercel build variable); locally the Vite proxy serves `/api`. */
+const VITE_API_URL = import.meta.env.VITE_API_URL as string | undefined;
+const API_URL = VITE_API_URL?.replace(/\/+$/, '') || '/api';
+
 /** Claude can take 5–20 seconds; give up well after that. */
 export const REQUEST_TIMEOUT_MS = 90_000;
 
@@ -22,7 +26,7 @@ async function requestJson(
   const timeout = AbortSignal.timeout(REQUEST_TIMEOUT_MS);
   let res: Response;
   try {
-    res = await fetch(`/api${path}`, {
+    res = await fetch(`${API_URL}${path}`, {
       ...init,
       signal: signal ? AbortSignal.any([signal, timeout]) : timeout,
     });

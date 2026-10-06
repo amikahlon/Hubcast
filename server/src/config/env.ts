@@ -9,6 +9,8 @@ const requiredString = (name: string) =>
 
 export const EnvSchema = z.object({
   PORT: z.coerce.number().int().min(1).max(65535).default(3001),
+  /** The one browser origin allowed to call the API (the Vercel URL in production). */
+  CORS_ORIGIN: z.string().min(1).default('http://localhost:5173'),
   ANTHROPIC_API_KEY: requiredString('ANTHROPIC_API_KEY'),
   ANTHROPIC_MODEL: requiredString('ANTHROPIC_MODEL'),
 });
