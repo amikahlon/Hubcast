@@ -1,10 +1,9 @@
 import { ChatRequestSchema, ChatResponseSchema } from '@hubcast/shared';
 import { Router } from 'express';
-import { AgentError } from '../agent/errors.js';
-import type { ChatService } from '../agent/chat.js';
-import { HttpError } from '../middleware/errors.js';
-import { parseRequest, sendValidated } from './validation.js';
+import { AgentError, type ChatService } from '../agent/chat.js';
+import { HttpError, parseRequest, sendValidated } from './http.js';
 
+// POST /chat is the start of the AI flow: route -> chat -> agent -> tools -> services.
 export function chatRouter(deps: { chatService: ChatService }): Router {
   const router = Router();
   router.post('/chat', async (req, res) => {

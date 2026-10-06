@@ -5,10 +5,9 @@ import { createChatService } from './agent/chat.js';
 import { createApp } from './app.js';
 import { parseEnv } from './config/env.js';
 import { ENV_FILE } from './config/paths.js';
-import { loadDataset } from './data/dataset.js';
-import { loadHubCatalog } from './data/hubs.js';
+import { loadDataset, loadHubCatalog } from './data/load.js';
 import { createServices } from './services/index.js';
-import { createTools } from './tools/tools.js';
+import { createTools } from './tools/index.js';
 
 async function main(): Promise<void> {
   if (existsSync(ENV_FILE)) process.loadEnvFile(ENV_FILE);

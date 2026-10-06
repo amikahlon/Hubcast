@@ -19,7 +19,7 @@
 
 3. **FEMA NRI**
    - Fetch county-level hazard data for all hub counties.
-   - Keep the FEMA scores and ratings needed for the hazards defined in `DESIGN.md`.
+   - Keep the FEMA scores and ratings needed for the hazards defined in `docs/DESIGN.md`.
    - Verify the current official FEMA service URL and field names before implementation.
    - Validate and convert the response before saving it.
 
@@ -36,11 +36,6 @@
    - Load and validate the generated data files.
    - Make `/health` return the data refresh date.
 
-6. **Tests**
-   - Test the data schemas and API response conversion without network calls.
-   - Verify committed data exists for all 19 hubs.
-   - Verify `/health` returns the data date.
-
 ## Out of scope
 
 Weather statistics, scoring, ranking, tools and the agent.
@@ -49,4 +44,4 @@ Weather statistics, scoring, ranking, tools and the agent.
 
 - `npm run refresh-data` creates valid Open-Meteo and FEMA data for all 19 hubs
 - The server loads the generated data successfully
-- `npm test`, `npm run typecheck` and `npm run lint` pass
+- `npm run typecheck` and `npm run lint` pass

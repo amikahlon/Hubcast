@@ -5,7 +5,7 @@
 ## Tasks
 
 1. **Dependencies and environment**
-   - Add the LangChain, LangGraph and Anthropic packages required by the architecture in `DESIGN.md`.
+   - Add the LangChain, LangGraph and Anthropic packages required by the architecture in `docs/DESIGN.md`.
    - Read `ANTHROPIC_API_KEY` and `ANTHROPIC_MODEL` from the environment.
    - Keep both values out of the source code.
    - Verify the current LangChain and Anthropic APIs during implementation instead of assuming outdated model or SDK behavior.

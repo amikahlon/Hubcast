@@ -1,5 +1,5 @@
 import type { Hub } from '@hubcast/shared';
-import type { Dataset } from '../data/dataset.js';
+import type { Dataset } from '../data/load.js';
 import { createHazardExposureService } from './hazardExposure.js';
 import { createHubsService } from './hubs.js';
 import { createRiskScoresService } from './riskScores.js';

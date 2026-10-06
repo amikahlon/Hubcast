@@ -8,8 +8,19 @@ import {
   type ToolCallSummary,
 } from '@hubcast/shared';
 import { z } from 'zod';
-import { AgentError } from './errors.js';
 import type { AgentRunner } from './agent.js';
+
+// The entry point of the AI flow. Everything for one chat message goes through here:
+//   routes/chat.ts -> chat.ts (this file) -> agent.ts -> tools/ -> services/
+// It runs the agent, validates the final answer and collects which tools and data were used.
+
+/** The agent could not produce a valid answer. The message is safe to show to API clients. */
+export class AgentError extends Error {
+  constructor(message: string, options?: { cause?: unknown }) {
+    super(message, options);
+    this.name = 'AgentError';
+  }
+}
 
 /** What the chat service returns; the route adds `threadId`. */
 export type ChatResult = Omit<ChatResponse, 'threadId'>;
@@ -57,6 +68,10 @@ function collectToolInfo(
   return { toolCalls, sources: [...sources], dataAsOf };
 }
 
+/**
+ * Runs one message through the agent. A failed model call, an invalid answer or a hub ID
+ * outside the catalog becomes an `AgentError`, which the route returns as `AGENT_ERROR`.
+ */
 export function createChatService(deps: {
   agent: AgentRunner;
   hubIds: readonly string[];

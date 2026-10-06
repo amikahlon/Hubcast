@@ -15,9 +15,9 @@ import {
   describeMetric,
   levelFor,
 } from '../config/scoring.js';
-import type { Dataset } from '../data/dataset.js';
+import type { Dataset } from '../data/load.js';
 import { countMetric, dataYears } from './weatherStats.js';
-import { resolveHubIds, round1 } from './util.js';
+import { resolveHubIds, round1 } from './common.js';
 
 const HAZARDS = HazardTypeSchema.options;
 
@@ -45,6 +45,11 @@ interface RawHubRisk {
 export function createRiskScoresService(dataset: Dataset) {
   const yearCount = dataYears(dataset.meta).count;
 
+  /**
+   * Scores one hub with the DESIGN.md formula: weather score (days per year vs cap) and FEMA
+   * score (highest related NRI score) are weighted per hazard, and the overall score is the
+   * average of the 6 hazards. Rounding is only for output; ranking uses the raw scores.
+   */
   function scoreHub(hubId: string): RawHubRisk {
     const days = dataset.weather.get(hubId)?.days ?? [];
     const nri = dataset.hazards[hubId]?.hazards;

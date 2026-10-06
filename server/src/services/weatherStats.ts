@@ -1,9 +1,8 @@
 import type { DataMeta, WeatherDay, WeatherMetric, WeatherStatsResult } from '@hubcast/shared';
 import { WeatherMetricSchema } from '@hubcast/shared';
 import { WEATHER_METRICS, describeMetric, matchesMetric } from '../config/scoring.js';
-import type { Dataset } from '../data/dataset.js';
-import { ServiceError } from './errors.js';
-import { resolveHubIds, round1 } from './util.js';
+import type { Dataset } from '../data/load.js';
+import { ServiceError, resolveHubIds, round1 } from './common.js';
 
 /** Years covered by the weather data, e.g. 2023 to 2025. */
 export function dataYears(meta: DataMeta): { startYear: number; endYear: number; count: number } {

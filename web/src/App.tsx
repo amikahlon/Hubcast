@@ -1,49 +1,28 @@
-import type { HealthResponse } from '@hubcast/shared';
-import { useEffect, useState } from 'react';
-import { fetchHealth } from './api.js';
-
-type Status =
-  { kind: 'loading' } | { kind: 'ok'; health: HealthResponse } | { kind: 'error'; message: string };
+import { useChat } from './hooks/useChat.js';
+import { Composer } from './components/Composer.js';
+import { EmptyState } from './components/EmptyState.js';
+import { Header } from './components/Header.js';
+import { MessageList } from './components/MessageList.js';
+import { useHubs } from './hooks/useHubs.js';
 
 export function App() {
-  const [status, setStatus] = useState<Status>({ kind: 'loading' });
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetchHealth(controller.signal)
-      .then((health) => setStatus({ kind: 'ok', health }))
-      .catch((error: unknown) => {
-        if (controller.signal.aborted) return;
-        setStatus({
-          kind: 'error',
-          message: error instanceof Error ? error.message : 'Unknown error',
-        });
-      });
-    return () => controller.abort();
-  }, []);
+  const { state, send, retry, newChat } = useChat();
+  const hubs = useHubs();
+  const started = state.messages.length > 0 || state.status === 'loading';
 
   return (
-    <main className="page">
-      <h1>Hubcast</h1>
-      <p className="subtitle">Weather risk assistant for 19 logistics hubs</p>
-
-      <section className="card" aria-live="polite">
-        <h2>Server status</h2>
-        {status.kind === 'loading' && <p>Checking…</p>}
-        {status.kind === 'error' && (
-          <p className="status status-error">Unavailable: {status.message}</p>
-        )}
-        {status.kind === 'ok' && (
-          <dl>
-            <dt>Status</dt>
-            <dd className="status status-ok">{status.health.status}</dd>
-            <dt>Hubs</dt>
-            <dd>{status.health.hubCount}</dd>
-            <dt>Data as of</dt>
-            <dd>{status.health.dataAsOf ?? 'not refreshed yet'}</dd>
-          </dl>
-        )}
-      </section>
-    </main>
+    <div className="app">
+      <Header canReset={started} onNewChat={newChat} />
+      <main className="main">
+        <div className="column">
+          {started ? (
+            <MessageList state={state} hubs={hubs} onRetry={retry} />
+          ) : (
+            <EmptyState onAsk={send} />
+          )}
+        </div>
+      </main>
+      <Composer loading={state.status === 'loading'} onSend={send} />
+    </div>
   );
 }

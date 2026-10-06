@@ -1,9 +1,9 @@
 import express, { type Express } from 'express';
 import type { ChatService } from './agent/chat.js';
-import { errorHandler, notFoundHandler } from './middleware/errors.js';
 import { chatRouter } from './routes/chat.js';
 import { healthRouter } from './routes/health.js';
 import { hubsRouter } from './routes/hubs.js';
+import { errorHandler, notFoundHandler } from './routes/http.js';
 import type { HubsService } from './services/hubs.js';
 
 export interface AppDeps {

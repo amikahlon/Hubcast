@@ -1,7 +1,7 @@
 import { HazardTypeSchema, type HazardExposureResult, type HazardType } from '@hubcast/shared';
 import { HAZARD_NRI } from '../config/scoring.js';
-import type { Dataset } from '../data/dataset.js';
-import { resolveHubIds } from './util.js';
+import type { Dataset } from '../data/load.js';
+import { resolveHubIds } from './common.js';
 
 export function createHazardExposureService(dataset: Dataset) {
   return {
