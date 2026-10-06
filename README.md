@@ -4,6 +4,8 @@ A chat assistant that explains weather risk for 19 fictional logistics hubs in r
 
 Built with React, Vite, Express, TypeScript, LangChain, LangGraph, Claude and Zod.
 
+**Live demo:** https://hubcast-theta.vercel.app
+
 ## How it works
 
 ```text
